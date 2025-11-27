@@ -1,0 +1,267 @@
+/* ==========================================================================
+   VARIAVEIS DE CORES (Igual ao Login)
+   ========================================================================== */
+:root {
+    --color-primary: #000033;    /* Azul escuro */
+    --color-secondary: #FE4701;  /* Laranja */
+    --color-text-light: #ffffff; /* Texto claro para fundo escuro */
+    --color-text-dark: #333333;  /* Texto escuro para fundo claro */
+    --color-input-bg: #F5F5F5;   /* Fundo dos inputs */
+    --color-card-bg: #ffffff;    /* Fundo do cartão central */
+}
+
+/* ==========================================================================
+   ESTILOS GERAIS E FUNDO DESFOCADO (Base do Login)
+   ========================================================================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-primary);
+    color: var(--color-text-dark); /* O texto padrão do corpo agora é escuro, pois ficará dentro do card branco */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative; 
+}
+
+/* Imagem de fundo desfocada */
+body::before {
+    content: "";
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* CERTIFIQUE-SE QUE O CAMINHO DA IMAGEM ESTÁ CORRETO */
+    background-image: url('imagens/fundologin.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px); /* Um pouco mais de desfoque para focar no conteúdo */
+    background-color: rgba(0, 0, 0, 0.4); /* Camada escura para melhorar leitura */
+    background-blend-mode: overlay;
+    z-index: -1; 
+}
+
+/* ==========================================================================
+   CABEÇALHO E NAVEGAÇÃO (Adaptado para fundo escuro)
+   ========================================================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    background-color: transparent; 
+    width: 95%;
+    max-width: 1000px;
+    z-index: 10;
+}
+
+.logo {
+    width: 80px; /* Um pouco menor para dar espaço */
+    height: auto;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%; 
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav a {
+    color: var(--color-text-light); /* Link branco */
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.nav a:hover {
+    color: var(--color-secondary);
+}
+
+/* ==========================================================================
+   CONTAINER PRINCIPAL E TÍTULO
+   ========================================================================== */
+.container {
+    width: 95%;
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+/* Título principal da página (RESERVA) - Branco */
+.title {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: var(--color-text-light);
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* O cartão branco onde fica o formulário */
+.form-section {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 15px; /* Bordas mais arredondadas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra mais destacada */
+}
+
+/* Títulos das seções dentro do cartão branco (Ex: 1. Escolha sua Arena...) */
+.section-title {
+    font-size: 1.3em;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS DO FORMULÁRIO DE PAGAMENTO
+   ========================================================================== */
+
+/* Layout de colunas */
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.full-width { width: 100%; }
+.half-width { flex: 1; }
+
+/* Labels e Inputs Customizados */
+.label-custom {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.input-custom {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eee; /* Borda padrão mais sutil */
+    border-radius: 8px;
+    background-color: var(--color-input-bg);
+    font-size: 1em;
+    color: #333;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+.input-custom:focus {
+    outline: none;
+    border-color: var(--color-secondary); /* Laranja ao focar */
+    background-color: #fff;
+}
+
+/* Display de Preço */
+.price-display {
+    background-color: #f8f9fa; /* Cinza bem claro */
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 25px;
+    border: 2px dashed #ddd; /* Borda tracejada para destacar */
+}
+
+.price-display span:first-child {
+    display: block;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#valor-total {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: var(--color-secondary); /* Preço em laranja */
+}
+
+/* Opções de Pagamento (Cartões) */
+.payment-options {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.payment-card {
+    flex: 1;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    padding: 20px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.payment-card:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Classe que o JS adiciona quando clica */
+.payment-card.selected {
+    border-color: var(--color-secondary);
+    background-color: #fff5f0;
+    box-shadow: 0 8px 20px rgba(254, 71, 1, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.payment-card h3 {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: var(--color-primary);
+}
+
+.payment-card p {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+}
+
+/* Botão de Finalizar */
+.submit-button {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--color-secondary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.submit-button:hover {
+    background-color: #d63c01;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .input-row { flex-direction: column; gap: 0; }
+    .payment-options { flex-direction: column; }
+    .payment-card { margin-bottom: 10px; }
+    .title { font-size: 1.8em; }
+    .price-display { padding: 15px; }
+    #valor-total { font-size: 2em; }
+}
